@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 from pathlib import Path
+import ui.res_rc
 
 # 让项目根目录(ui 包)与 src(controller/tools 等)都进入模块搜索路径
 _ROOT = Path(__file__).resolve().parent

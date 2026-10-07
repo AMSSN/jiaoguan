@@ -98,6 +98,8 @@ class SystemController(QWidget):
                          self.edit_outer_lower, self.edit_outer_upper):
                 edit.setText("")
             return
+        self.spin_exposure.setValue(mc.camera_exposure/1000)
+        self.spin_gain.setValue(mc.camera_gain)
         self.edit_inner_lower.setText(str(mc.inner_lower))
         self.edit_inner_upper.setText(str(mc.inner_upper))
         self.edit_outer_lower.setText(str(mc.outer_lower))
@@ -105,11 +107,12 @@ class SystemController(QWidget):
 
     # ---------------- 事件绑定 ----------------
     def _connect(self):
-        self.btn_apply.clicked.connect(self.on_apply_params)
-        self.btn_test.clicked.connect(self.on_test_connection)
-        self.chk_save_image.toggled.connect(self.on_save_image_toggled)
-        self.combo_model.currentIndexChanged.connect(self._load_model_fields)
-        self.btn_save_model.clicked.connect(self.on_save_model)
+        self.btn_apply.clicked.connect(self.on_apply_params)  # 应用参数按钮
+        self.btn_test.clicked.connect(self.on_test_connection)  # 测试连接按钮
+        self.chk_save_image.toggled.connect(self.on_save_image_toggled) # 是否保存图片单选框
+        self.combo_model.currentIndexChanged.connect(self._load_model_fields)  # 型号的多选框
+        self.btn_save_model.clicked.connect(self.on_save_model)  # 保存型号按钮
+
 
     # ---------------- 槽函数 ----------------
     def on_apply_params(self):
@@ -117,13 +120,16 @@ class SystemController(QWidget):
         gain = self.spin_gain.value()
         try:
             self.camera.set_params(exposure_ms, gain)
+            # 写入到全局配置文件
+            # TODO 整个逻辑要从双相机改为单相机！！！！
+            cam = self.gc.first_camera()
+            cam["exposure"] = exposure_ms * 1000.0
+            cam["gain"] = gain
+            self.gc.save_app()
+            self.label_cam_state.setText("参数已应用")
         except Exception as e:  # 相机未打开等
             logger.warning(f"应用相机参数异常: {e}")
-        cam = self.gc.first_camera()
-        cam["exposure"] = exposure_ms * 1000.0
-        cam["gain"] = gain
-        self.gc.save_app()
-        self.label_cam_state.setText("参数已应用")
+
 
     def on_test_connection(self):
         ok, msg = self.camera.test_connection()
@@ -147,6 +153,9 @@ class SystemController(QWidget):
                 node = items.setdefault(key, {})
                 node["lower"] = float(lo.text())
                 node["upper"] = float(hi.text())
+            cam_items = mc.camera
+            cam_items["exposure"] = int(self.spin_exposure.value() * 1000)  # 转为微秒，与 on_apply_params / 加载处保持一致
+            cam_items["gain"] = self.spin_gain.value()  # 配置里 gain 是浮点，不要 int()
         except ValueError:
             self.label_cam_state.setText("型号参数格式错误")
             return

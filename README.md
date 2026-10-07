@@ -105,7 +105,11 @@ python -m PyQt5.uic.pyuic ui/page_system.ui -o ui/page_system.py
 
 # TODO
 
-1、
+1、my_camera.py设置曝光时间逻辑：初始化时根据配置文件的内容设置，“系统”界面上设置曝光和增益时，对相机生效的同时写入配置文件。这里要根据API文档确定曝光时间的单位是毫秒ms还是微妙um
+
+2、my_camera.py，设置去抖动时间、间隔、延迟。
+
+3、整个逻辑要从双相机改为单相机！！！！
 
 
 

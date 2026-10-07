@@ -9,7 +9,8 @@ import json
 
 from PyQt6.QtCore import QObject, QTimer, Qt, pyqtSignal
 from PyQt6.QtGui import QColor
-from PyQt6.QtWidgets import QTableWidgetItem, QWidget
+from PyQt6.QtWidgets import QTableWidgetItem, QWidget, QHeaderView
+from pandas.io.pytables import Fixed
 
 from GlobalConfig import GlobalConfig
 from tools import logger
@@ -31,6 +32,19 @@ class InfoController(QWidget):
         super(InfoController, self).__init__(parent)
         self.ui = Ui_Form_infoPage()
         self.ui.setupUi(self)
+        # 设置表格的行宽
+        _header = self.ui.tableWidget.horizontalHeader()
+        _header.setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+        _header.setSectionResizeMode(2, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(3, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(4, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(5, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(6, QHeaderView.ResizeMode.Stretch)
+        # 按序号排序
+        # self.ui.tableWidget.setSortingEnabled(True)
+        # self.ui.tableWidget.horizontalHeader().setSortIndicatorShown(True)
+        # self.ui.tableWidget.horizontalHeader().setSortIndicator(0, Qt.SortOrder.AscendingOrder)
 
         self.gc = GlobalConfig()
         self.db = self.gc.get_db()

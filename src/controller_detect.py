@@ -127,7 +127,7 @@ class DetectController(QWidget):
             self.start()
 
     def start(self):
-        mc = self.gc.current_model_config
+        mc = self.gc.current_model_config  # 用的是Type.json里的曝光值
         if mc is None:
             QMessageBox.warning(self, "提示", "请先选择产品型号")
             return
@@ -162,14 +162,16 @@ class DetectController(QWidget):
             return
         self._bridge.frameReady.emit(frame)
 
+
     def _on_frame_ui(self, frame):
+        # 真正的帧回调函数(槽函数)
         if frame is None or not self._running:
             return
         self._frame_count += 1
         # 前后端交替: 第 1 帧前端, 第 2 帧后端, 循环
         target = self.label_front if self._frame_count % 2 == 1 else self.label_back
         self._show_image(target, frame)
-
+        #TODO 梳理检测流程，检测-更新结果-记录结果
         mc = self.gc.current_model_config
         if mc is None:
             return
@@ -185,8 +187,7 @@ class DetectController(QWidget):
             else:
                 rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 h, w, ch = rgb.shape
-                qimg = QImage(rgb.data, w, h, ch * w,
-                              QImage.Format.Format_RGB888).copy()
+                qimg = QImage(rgb.data, w, h, ch * w, QImage.Format.Format_RGB888).copy()
             pix = QPixmap.fromImage(qimg).scaled(
                 label.size(),
                 Qt.AspectRatioMode.KeepAspectRatio,

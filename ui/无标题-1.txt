@@ -8,3 +8,8 @@ python -m PyQt6.uic.pyuic page_info.ui -o page_info.py
 
 python -m PyQt6.uic.pyuic mainwindow.ui -o mainwindow.py
 
+pyrcc6 res.qrc -o res_rc1.py
+
+D:\Qt\6.7.3\msvc2022_64\bin\rcc -g python E:\CodePython\jiaoguan\ui\res.qrc -o E:\CodePython\jiaoguan\ui\res_rc1.py
+
+

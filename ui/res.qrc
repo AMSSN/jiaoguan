@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="png">
+    <file>data.png</file>
+    <file>system.png</file>
+    <file>detect.png</file>
+    <file>info.png</file>
+    <file>logo.png</file>
+    <file>NG.png</file>
+    <file>OK.png</file>
+    <file>UnKnow.png</file>
+    <file>user.png</file>
+  </qresource>
+</RCC>

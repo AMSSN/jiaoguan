@@ -5,7 +5,7 @@ import json
 
 from PyQt6.QtCore import QDateTime, Qt
 from PyQt6.QtGui import QColor
-from PyQt6.QtWidgets import QFileDialog, QMessageBox, QTableWidgetItem, QWidget
+from PyQt6.QtWidgets import QFileDialog, QMessageBox, QTableWidgetItem, QWidget, QHeaderView
 
 from GlobalConfig import GlobalConfig
 from tools import logger
@@ -65,6 +65,15 @@ class DataController(QWidget):
         table.setColumnCount(len(headers))
         table.setHorizontalHeaderLabels(headers)
         table.setRowCount(0)
+        # 设置表格的行宽
+        _header = self.ui.tableWidget.horizontalHeader()
+        _header.setSectionResizeMode(0, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+        _header.setSectionResizeMode(2, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(3, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(4, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(5, QHeaderView.ResizeMode.Fixed)
+        _header.setSectionResizeMode(6, QHeaderView.ResizeMode.Stretch)
 
     # ---------------- 查询 ----------------
     def on_select(self):

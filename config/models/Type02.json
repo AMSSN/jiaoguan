@@ -2,7 +2,7 @@
     "name": "Type02",
     "desc": "环形件-放宽公差",
     "version": "1.0",
-    "updated_at": "2026-10-07 08:59:58",
+    "updated_at": "2026-10-07 13:51:21",
     "camera": {
         "exposure": 5500.0,
         "gain": 1.2
@@ -11,15 +11,15 @@
     "items": {
         "inner_radius": {
             "enabled": true,
-            "lower": 17.0,
-            "upper": 19.0,
+            "lower": 200.0,
+            "upper": 200.0,
             "unit": "mm",
             "mm_per_pixel": 0.05
         },
         "outer_radius": {
             "enabled": true,
-            "lower": 31.5,
-            "upper": 34.0,
+            "lower": 200.5,
+            "upper": 200.0,
             "unit": "mm",
             "mm_per_pixel": 0.05
         },
