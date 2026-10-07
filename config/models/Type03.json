@@ -1,0 +1,36 @@
+{
+    "name": "Type03",
+    "desc": "环形件-仅测尺寸",
+    "version": "1.0",
+    "updated_at": "2026-09-08 00:00:00",
+    "camera": {
+        "exposure": 5000.0,
+        "gain": 1.0
+    },
+    "save_image": false,
+    "items": {
+        "inner_radius": {
+            "enabled": true,
+            "lower": 16.0,
+            "upper": 20.0,
+            "unit": "mm",
+            "mm_per_pixel": 0.05
+        },
+        "outer_radius": {
+            "enabled": true,
+            "lower": 30.5,
+            "upper": 35.0,
+            "unit": "mm",
+            "mm_per_pixel": 0.05
+        },
+        "fencen": {
+            "enabled": false,
+            "threshold": 0.35
+        },
+        "neiling": {
+            "enabled": false,
+            "threshold": 0.25
+        }
+    },
+    "remark": "只做尺寸检测，关闭纹理类检测项"
+}

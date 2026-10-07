@@ -1,0 +1,10 @@
+python -m PyQt6.uic.pyuic page_system.ui -o page_system.py
+
+python -m PyQt6.uic.pyuic page_data.ui -o page_data.py
+
+python -m PyQt6.uic.pyuic page_detect.ui -o page_detect.py
+
+python -m PyQt6.uic.pyuic page_info.ui -o page_info.py
+
+python -m PyQt6.uic.pyuic mainwindow.ui -o mainwindow.py
+

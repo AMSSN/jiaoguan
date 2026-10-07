@@ -1,0 +1,36 @@
+{
+    "name": "Type01",
+    "desc": "环形件-标准公差",
+    "version": "1.0",
+    "updated_at": "2026-10-07 09:41:54",
+    "camera": {
+        "exposure": 5000.0,
+        "gain": 1.0
+    },
+    "save_image": null,
+    "items": {
+        "inner_radius": {
+            "enabled": true,
+            "lower": 17.5,
+            "upper": 18.5,
+            "unit": "mm",
+            "mm_per_pixel": 0.05
+        },
+        "outer_radius": {
+            "enabled": true,
+            "lower": 32.0,
+            "upper": 33.6,
+            "unit": "mm",
+            "mm_per_pixel": 0.05
+        },
+        "fencen": {
+            "enabled": true,
+            "threshold": 0.35
+        },
+        "neiling": {
+            "enabled": true,
+            "threshold": 0.25
+        }
+    },
+    "remark": "标准公差型号"
+}

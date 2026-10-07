@@ -1,0 +1,44 @@
+{
+    "app": {
+        "name": "检测系统",
+        "language": "zh-CN",
+        "save_image": true,
+        "image_dir": "images"
+    },
+    "cameras": [
+        {
+            "role": "front",
+            "name": "前端相机",
+            "driver": "mock",
+            "ip": "192.168.1.10",
+            "exposure": 5000.0,
+            "gain": 1.0,
+            "width": 1280,
+            "height": 1024,
+            "frame_rate": 20.0,
+            "trigger_mode": "off",
+            "enabled": true
+        },
+        {
+            "role": "back",
+            "name": "后端相机",
+            "driver": "mock",
+            "ip": "192.168.1.11",
+            "exposure": 5000.0,
+            "gain": 1.0,
+            "width": 1280,
+            "height": 1024,
+            "frame_rate": 20.0,
+            "trigger_mode": "off",
+            "enabled": true
+        }
+    ],
+    "detection": {
+        "auto_run": false,
+        "default_model": "Type01"
+    },
+    "log": {
+        "level": "INFO",
+        "keep_days": 7
+    }
+}

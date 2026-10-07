@@ -1,0 +1,13 @@
+# 核心依赖（必须）
+
+numpy>=1.21
+
+# 可选依赖：算法加速与图像编码（不装也能跑，算法自动降级为纯 numpy 实现）
+opencv-python>=4.5
+
+# 可选依赖：Excel 导出（CSV 导出不需要）
+pandas>=1.3
+openpyxl>=3.0
+
+# 可选依赖：切换到 MySQL 数据源时安装（默认使用 SQLite，无需此依赖）
+PyMySQL>=1.0
